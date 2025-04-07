@@ -47,7 +47,7 @@ app.use("/api", paymentRoutes);
 mongoose
   .connect(process.env.CONNECTION_STRING)
   .then(() => {
-    console.log("✅ Connected to MongoDB");
+    console.log("✅ Connected");
   })
   .catch(err => console.error("❌ MongoDB connection error:", err));
 
