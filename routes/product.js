@@ -64,7 +64,7 @@ router.get("/products/:title", async (req, res) => {
     let productTitle = req.params.title;
 
     // Replace dashes with spaces to match the database format
-    productTitle = productTitle.replace(/-/g, ' ');
+    //productTitle = productTitle.replace(/-/g, ' ');
 
     console.log("Fetching product:", productTitle);
 
@@ -92,7 +92,7 @@ router.get("/categories/:categoryType", async (req, res) => {
     let categoryType = req.params.categoryType;
 
     // Replace dashes with spaces to match the category in the database
-    categoryType = categoryType.replace(/-/g, ' ');
+   // categoryType = categoryType.replace(/-/g, ' ');
 
     console.log("Fetching category:", categoryType);
 
