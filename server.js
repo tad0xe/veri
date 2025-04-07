@@ -45,12 +45,13 @@ app.use("/api", paymentRoutes);
  
 
 mongoose
-  .connect(process.env.CONNECTION_STRING)
+  .connect("mongodb+srv://toluarejibadey:ajib@cluster0.y5zbkln.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
-    console.log("✅ Connected");
+    console.log("✅ Connected to MongoDB");
   })
-  .catch(err => console.error("❌ MongoDB connection error:", err));
-
+  .catch(err => {
+    console.error("❌ MongoDB connection error:", err);
+  });
 
 //const PORT = process.env.PORT || 5000;
 
