@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const ProductSchema = new Schema(
   {
     category: { type: Schema.Types.ObjectId, ref: "Category" },
@@ -36,7 +37,19 @@ const ProductSchema = new Schema(
   }
 );
 
-ProductSchema.methods.calculateOverallRating = async function() {
+// ✅ Automatically trim string fields before saving
+ProductSchema.pre("save", function (next) {
+  const fieldsToTrim = ["title", "description", "brand", "material", "size"];
+  for (let field of fieldsToTrim) {
+    if (this[field] && typeof this[field] === "string") {
+      this[field] = this[field].trim();
+    }
+  }
+  next();
+});
+
+// Method to calculate average review rating
+ProductSchema.methods.calculateOverallRating = async function () {
   const reviews = this.reviews;
   if (reviews.length > 0) {
     const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
@@ -46,6 +59,5 @@ ProductSchema.methods.calculateOverallRating = async function() {
   }
 };
 
-
-const Product = mongoose.model("Product", ProductSchema);
-module.exports = Product;
+// ✅ Safe model export to prevent OverwriteModelError
+module.exports = mongoose.models.Product || mongoose.model("Product", ProductSchema);

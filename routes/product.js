@@ -61,7 +61,8 @@ router.get(`/products`, async (req, res) => {
 router.get("/products/:title", async (req, res) => {
   try {
     // Get the title from the URL parameter
-    let productTitle = req.params.title;
+  
+    let productTitle = decodeURIComponent(req.params.title).trim();
 
     // Replace dashes with spaces to match the database format
     //productTitle = productTitle.replace(/-/g, ' ');

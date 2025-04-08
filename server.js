@@ -48,6 +48,7 @@ mongoose
   .connect("mongodb+srv://toluarejibadey:ajib@cluster0.y5zbkln.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log("✅ Connected to MongoDB");
+    
   })
   .catch(err => {
     console.error("❌ MongoDB connection error:", err);

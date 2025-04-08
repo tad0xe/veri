@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const Review = require("../models/review");
 const Product = require("../models/product");
-const verifyToken = require("../middelwares/verify-token");
+
 
 
 // POST review
-router.post("/reviews/:productID", [verifyToken], async (req, res) => {
+router.post("/reviews/:productID", async (req, res) => {
   try {
     const review = new Review();
     review.headline = req.body.headline;
