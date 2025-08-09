@@ -9,3 +9,4 @@ npm install
 nodemon server
 "# veri" 
 "# veri" 
+"# event-ticket" 
